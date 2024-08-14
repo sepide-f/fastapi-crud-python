@@ -1,1 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/userapi
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: userapi
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: sepide123
+    ports:
+      - "5432:5432"
 
